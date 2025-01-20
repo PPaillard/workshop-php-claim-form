@@ -36,7 +36,7 @@ Nos clients nous ont également demandé de pouvoir accéder à un récapitulati
 >
 > **Indice n°2** : Pensez à vous prémunir des attaques malicieuses en utilisant [htmlentities()](https://www.php.net/manual/fr/function.htmlentities.php)
 
-## 4 - Contrôle "Quabité"
+## 4 - Contrôle "Quanité"
 
 Naturellement nous souhaitons prévenir les réclamations de mauvaise qualité et informer nos utilisateurs s'ils renseignent mal leurs demandes.
 
