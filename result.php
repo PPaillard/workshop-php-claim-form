@@ -2,7 +2,12 @@
 $errors = [];
 
 // TODO 3 - Get the data from the form and check for errors
-
+if(isset($_POST)) {
+    $companyName = $_POST['companyName'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $contactMessage = $_POST['contactMessage'];
+}
 
 if (!empty($errors)) {
     require 'error.php';
@@ -39,15 +44,11 @@ if (!empty($errors)) {
 
             <!-- TODO 2 - Replace those placeholders by the values sent from the form -->
             <ul>
-                <li>Votre entreprise : <span>Dunder Mifflin</span></li>
-                <li>Votre nom : <span>Mickael Scott</span></li>
-                <li>Votre email : <span>mickael.scott@dundermifflin.com</span></li>
+                <li>Votre entreprise : <span><?= htmlentities($companyName); ?></span></li>
+                <li>Votre nom : <span><?= htmlentities ($name); ?></span></li>
+                <li>Votre email : <span><?php echo htmlentities ($email); ?></span></li>
                 <li>Votre message :
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Provident facere, tempora possimus aspernatur excepturi
-                        incidunt dolores illo dicta similique harum mollitia enim
-                        voluptates delectus? Repellendus inventore molestiae a
-                        accusamus deleniti?
+                    <p><?php echo htmlentities ($contactMessage); ?>
                     </p>
                 </li>
             </ul>
