@@ -3,10 +3,35 @@ $errors = [];
 
 // TODO 3 - Get the data from the form and check for errors
 if(isset($_POST)) {
-    $companyName = $_POST['companyName'];
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $contactMessage = $_POST['contactMessage'];
+    $data = array_map('trim', $_POST);
+
+    // validation
+    if (empty($data['companyName'])) {
+        $errors[] = 'The companyName is mandatory';
+    }
+    if (empty($data['name'])) {
+        $errors[] = 'The name is mandatory';
+    }
+    if (empty($data['email'])) {
+        $errors[] = 'The email is mandatory';
+    }
+    if (empty($data['contactMessage'])) {
+        $errors[] = 'The contactMessage is mandatory';
+    }
+    if (strlen($data['contactMessage']) < 30) {
+        $errors[] = 'The contactMessage length should be greatter than 30 characters';
+    }
+    if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
+        $errors[] = "L'adresse mail n’est pas au bon format.";
+    }
+
+    $companyName = $data['companyName'];
+    $name = $data['name'];
+    $email = $data['email'];
+    $contactMessage = $data['contactMessage'];
+}
+else {
+    $errors[] = "Aucun formulaire n'a été envoyé.";
 }
 
 if (!empty($errors)) {
